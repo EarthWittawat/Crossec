@@ -9,9 +9,16 @@ import time
 # set title of app
 image = Image.open('Logo.png')
 
-st.image(image,width=150)
+st.image(image,width=200)
 st.markdown(""" <style> .font {
-font-size:24px ; font-family: 'Prompt'; color: black;} 
+  font-family: 'Prompt';
+  font-style: Bold;
+  font-weight: 500;
+  font-size: 24px;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/prompt/v10/-W_8XJnvUD7dzB2Ck_kIfWMuQ5Q.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200C-200D, U+25CC;
+}
 </style> """, unsafe_allow_html=True)
 st.markdown('<p class="font">ระบบส่งเสริมการทำปฏิบัติการเนื้อเยื่อพืชด้วยปัญญาประดิษฐ์</p>', unsafe_allow_html=True)
 st.write("")
