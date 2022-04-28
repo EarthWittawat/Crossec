@@ -113,5 +113,6 @@ with st.container():
     # enable users to upload images for the model to make predictions
     st.write("")
 with st.container():
+    cpt=0
     cpt = sum([len(files) for r, d, files in os.walk('./predicted/')])
     st.metric(label="Image Predicted", value=cpt, delta=1)
