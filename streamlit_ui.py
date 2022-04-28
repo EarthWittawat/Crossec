@@ -10,6 +10,7 @@ import time
 st.title("Crossec")
 st.write("")
 file_up = st.file_uploader("Upload an image", type = "jpg")
+st.write("")
 with st.expander("ส่งงาน"):
     name = st.text_input('ชื่อ-นามสกุล')
     room = st.selectbox(
