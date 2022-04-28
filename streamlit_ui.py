@@ -11,7 +11,7 @@ st.title("Model น่าโง่")
 st.write("")
 with st.sidebar:
     name = st.text_input('ชื่อ-นามสกุล')
-    room = st.multiselect(
+    room = st.selectbox(
         'ห้อง',
         ['ม.5/1','ม.5/2','ม.5/3','ม.5/11']
     )
