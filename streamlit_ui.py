@@ -7,7 +7,7 @@ import streamlit as st
 import time
 
 # set title of app
-st.title("Model น่าโง่")
+st.title("Crossec")
 st.write("")
 file_up = st.file_uploader("Upload an image", type = "jpg")
 with st.expander("ส่งงาน"):
