@@ -1,5 +1,6 @@
 """Create an Image Classification Web App using PyTorch and Streamlit."""
 # import libraries
+from turtle import width
 from PIL import Image
 from torchvision import models, transforms
 import torch
@@ -7,8 +8,13 @@ import streamlit as st
 import time
 
 # set title of app
-st.title("Crossec")
-st.subheader("ระบบส่งเสริมการทำปฏิบัติการเนื้อเยื่อพืชด้วยปัญญาประดิษฐ์")
+image = Image.open('Logo.png')
+
+st.image(image,width=200)
+st.markdown(""" <style> .font {
+font-size:24px ; font-family: 'Prompt'; color: black;} 
+</style> """, unsafe_allow_html=True)
+st.markdown('<p class="font">ระบบส่งเสริมการทำปฏิบัติการเนื้อเยื่อพืชด้วยปัญญาประดิษฐ์</p>', unsafe_allow_html=True)
 st.write("")
 file_up = st.file_uploader("Upload an image", type = "jpg")
 st.write("")
