@@ -1,6 +1,5 @@
 """Create an Image Classification Web App using PyTorch and Streamlit."""
 # import libraries
-from turtle import width
 from PIL import Image
 from torchvision import models, transforms
 import torch
