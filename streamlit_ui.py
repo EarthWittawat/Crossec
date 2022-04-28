@@ -18,11 +18,10 @@ with st.sidebar:
     num = st.text_input('เลขที่')
     user={'Name':name,'Room':room,'Number':num}
     if st.button('Send'):
-        done = st.success(user['Name'],"ห้อง " ,user['Room'],"เลขที่ ",user['Number'])
+        st.success(user['Name'],"ห้อง " ,user['Room'],"เลขที่ ",user['Number'])
 # enable users to upload images for the model to make predictions
 file_up = st.file_uploader("Upload an image", type = "jpg")
 st.write("")
-st.write(done)
 
 def predict(image):
     """Return top 5 predictions ranked by highest probability.
