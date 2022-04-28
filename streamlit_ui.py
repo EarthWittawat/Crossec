@@ -9,6 +9,10 @@ import time
 # set title of app
 st.title("Model น่าโง่")
 st.write("")
+with st.sidebar:
+    add_ratio = st.ratio(
+        "Hay!",("test","test1")
+    )
 
 # enable users to upload images for the model to make predictions
 file_up = st.file_uploader("Upload an image", type = "jpg")
