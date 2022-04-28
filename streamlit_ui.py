@@ -9,7 +9,7 @@ import time
 # set title of app
 st.title("Model น่าโง่")
 st.write("")
-with st.sidebar:
+with st.expander("ส่งงาน"):
     name = st.text_input('ชื่อ-นามสกุล')
     room = st.selectbox(
         'ห้อง',
