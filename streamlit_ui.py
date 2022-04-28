@@ -11,7 +11,7 @@ st.title("Model น่าโง่")
 st.write("")
 with st.sidebar:
     add_radio = st.radio(
-        "หัวข้อ",("test","test1")
+        "Lab",("test","test1")
     )
 
 # enable users to upload images for the model to make predictions
