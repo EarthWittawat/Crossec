@@ -10,10 +10,13 @@ import time
 st.title("Model น่าโง่")
 st.write("")
 with st.sidebar:
-    add_radio = st.radio(
-        "Lab",("test","test1")
+    name = st.text_input('ชื่อ-นามสกุล')
+    room = st.multiselect(
+        'ห้อง',
+        ['ม.5/1','ม.5/2','ม.5/3','ม.5/11']
     )
-
+    num = st.text_input('เลขที่')
+    send = st.button('Send')
 # enable users to upload images for the model to make predictions
 file_up = st.file_uploader("Upload an image", type = "jpg")
 
