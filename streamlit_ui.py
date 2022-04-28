@@ -8,6 +8,7 @@ import time
 
 # set title of app
 st.title("Crossec")
+st.header("ระบบส่งเสริมการทำปฏิบัติการเนื้อเยื่อพืชด้วยปัญญาประดิษฐ์")
 st.write("")
 file_up = st.file_uploader("Upload an image", type = "jpg")
 st.write("")
