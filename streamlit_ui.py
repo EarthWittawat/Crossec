@@ -9,7 +9,7 @@ import time
 # set title of app
 image = Image.open('Logo.png')
 
-st.image(image,width=200)
+st.image(image,width=150)
 st.markdown(""" <style> .font {
 font-size:24px ; font-family: 'Prompt'; color: black;} 
 </style> """, unsafe_allow_html=True)
