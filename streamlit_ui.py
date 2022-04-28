@@ -10,11 +10,6 @@ import time
 st.title("Model น่าโง่")
 st.write("")
 
-my_bar = st.progress(0)
-
-for percent_complete in range(100):
-    time.sleep(0.1)
-    my_bar.progress(percent_complete +1)
 # enable users to upload images for the model to make predictions
 file_up = st.file_uploader("Upload an image", type = "jpg")
 
@@ -64,6 +59,11 @@ if file_up is not None:
     st.write("")
     st.write("Just a second ...")
     labels = predict(file_up)
+    my_bar = st.progress(0)
+
+    for percent_complete in range(100):
+        time.sleep(0.1)
+        my_bar.progress(percent_complete +1)
 
     # print out the top 5 prediction labels with scores
     for i in labels:
