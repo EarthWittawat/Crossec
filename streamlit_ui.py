@@ -20,7 +20,7 @@ with st.sidebar:
     user={'Name':name,'Room':room,'Number':num}
 # enable users to upload images for the model to make predictions
 file_up = st.file_uploader("Upload an image", type = "jpg")
-st.write(user)
+st.write(user['Name'])
 
 def predict(image):
     """Return top 5 predictions ranked by highest probability.
