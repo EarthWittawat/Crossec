@@ -18,7 +18,7 @@ with st.sidebar:
     num = st.text_input('เลขที่')
     user={'Name':name,'Room':room,'Number':num}
     if st.button('Send'):
-        st.success(user['Name']+user['Room'])
+        st.success(user['Name']+ " ชั้น" + user['Room']+ " เลขที่" +user['Number'])
 # enable users to upload images for the model to make predictions
 file_up = st.file_uploader("Upload an image", type = "jpg")
 st.write("")
