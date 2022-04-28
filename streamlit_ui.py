@@ -1,6 +1,5 @@
 """Create an Image Classification Web App using PyTorch and Streamlit."""
 # import libraries
-from asyncio.windows_events import NULL
 from PIL import Image
 from cv2 import CAP_PROP_TRIGGER
 from torchvision import models, transforms
