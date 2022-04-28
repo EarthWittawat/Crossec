@@ -71,10 +71,13 @@ if file_up is not None:
     image = Image.open(file_up)
     st.image(image, caption = 'Uploaded Image.', use_column_width = True)
     st.write("")
-    st.write("Just a second ...")
-    labels = predict(file_up)
-    
+    predict_progress = st.progress(0)
 
+    for percent_complete in range(100):
+        time.sleep(0.05)
+        predict_progress.progress(percent_complete + 1)
+    labels = predict(file_up)
+    score = int(labels[0][1])
+    score = str(score)
     # print out the top 5 prediction labels with scores
-    for i in labels:
-        st.write("Prediction (index, name)", i[0], ",   Score: ", i[1])
+    st.success("Result: "+ labels[0][0] + " " + score+"%")
