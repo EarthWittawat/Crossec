@@ -4,11 +4,17 @@ from PIL import Image
 from torchvision import models, transforms
 import torch
 import streamlit as st
+import time
 
 # set title of app
 st.title("Model น่าโง่")
 st.write("")
 
+my_bar = st.progress(0)
+
+for percent_complete in range(100):
+    time.sleep(0.1)
+    my_bar.progress(percent_complete +1)
 # enable users to upload images for the model to make predictions
 file_up = st.file_uploader("Upload an image", type = "jpg")
 
