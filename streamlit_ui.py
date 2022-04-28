@@ -54,9 +54,6 @@ def predict(image):
 
 
 image = Image.open('Logo.png')
-catch=glob.glob('IMG_9634
-*.jpg')
-st.write(catch)
 with st.container():
     st.image(image,width=200)
 
@@ -87,22 +84,34 @@ with st.container():
         )
         user={'Name':name,'Room':room,'Number':num}
         if st.button('Send'):
-            noobcopycatch = glob.glob(file_up.name)
-            st.write(noobcopycatch)
-            if noobcopycatch != NULL:
-                st.write("อย่าโกงงงง")
-            else:
+            if name != "" and num != "":
+            #     noobcopycatch = glob.glob('./predicted/'+ labels[0][0]+'/'+file_up.name)
+            #     if noobcopycatch != []:
+            #         st.write("อย่าโกงงงง")
+            #     else:
+            #         count = 0
+            #         path = './predicted/' + labels[0][0]
+            #         isExist = os.path.exists(path)
+            #         if not isExist:
+            # # Create a new directory because it does not exist 
+            #             os.makedirs(path)
+            #         for root_dir, cur_dir, files in os.walk(r'.\predicted'):
+            #             count += len(files)
+            #         with open(os.path.join(path,file_up.name), "wb") as f:
+            #             f.write(file_up.getbuffer())
+            #         st.success(user['Name']+ " ชั้น " + user['Room']+ " เลขที่ " +user['Number']+" ส่ง "+labels[0][0]+" แล้ว")
                 count = 0
-                path = './predicted/' + labels[0][0]
+                path = './predicted/' + tissue
                 isExist = os.path.exists(path)
                 if not isExist:
-        # Create a new directory because it does not exist 
-                    os.makedirs(path)
+                        os.makedirs(path)
                 for root_dir, cur_dir, files in os.walk(r'.\predicted'):
-                    count += len(files)
+                        count += len(files)
                 with open(os.path.join(path,file_up.name), "wb") as f:
-                    f.write(file_up.getbuffer())
-                st.success(user['Name']+ " ชั้น " + user['Room']+ " เลขที่ " +user['Number']+" ส่ง"+labels[0][0]+"แล้ว")
+                        f.write(file_up.getbuffer())
+                st.success(user['Name']+ " ชั้น " + user['Room']+ " เลขที่ " +user['Number']+" ส่ง "+labels[0][0]+" แล้ว")
+            else:
+               st.error("กรุณากรอกข้อมูลให้ครบถ้วน") 
     # enable users to upload images for the model to make predictions
     st.write("")
 with st.container():
