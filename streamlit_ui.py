@@ -1,7 +1,6 @@
 """Create an Image Classification Web App using PyTorch and Streamlit."""
 # import libraries
 from PIL import Image
-from cv2 import CAP_PROP_TRIGGER
 from torchvision import models, transforms
 import torch
 import streamlit as st
