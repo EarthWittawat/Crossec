@@ -9,6 +9,7 @@ import time
 # set title of app
 st.title("Model น่าโง่")
 st.write("")
+file_up = st.file_uploader("Upload an image", type = "jpg")
 with st.expander("ส่งงาน"):
     name = st.text_input('ชื่อ-นามสกุล')
     room = st.selectbox(
@@ -20,7 +21,6 @@ with st.expander("ส่งงาน"):
     if st.button('Send'):
         st.success(user['Name']+ " ชั้น " + user['Room']+ " เลขที่ " +user['Number'])
 # enable users to upload images for the model to make predictions
-file_up = st.file_uploader("Upload an image", type = "jpg")
 st.write("")
 
 def predict(image):
