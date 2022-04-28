@@ -93,4 +93,4 @@ with st.container():
         # print out the top 5 prediction labels with scores
         st.success("Result: "+ labels[0][0] + " " + score+"%")
 with st.container():
-    st.metric(label="Image Predicted", value=1, delta=1)
+    st.metric(label="Image Predicted", value=2, delta=1)
