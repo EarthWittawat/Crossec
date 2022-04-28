@@ -10,7 +10,7 @@ import time
 st.title("Model น่าโง่")
 st.write("")
 with st.sidebar:
-    add_ratio = st.ratio(
+    add_radio = st.radio(
         "Hay!",("test","test1")
     )
 
