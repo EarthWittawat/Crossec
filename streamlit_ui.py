@@ -6,7 +6,7 @@ import torch
 import streamlit as st
 
 # set title of app
-st.title("Simple Image Classification Application")
+st.title("Model น่าโง่")
 st.write("")
 
 # enable users to upload images for the model to make predictions
