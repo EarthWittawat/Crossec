@@ -7,18 +7,20 @@ from torchvision import models, transforms
 import torch
 import streamlit as st
 import time
-import os
-import glob
+import os.path
+from os import path
 import urllib.request
 from pathlib import Path
 from csv import writer
 import pathlib
-import codecs
+
 temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath
-MODEL_URL = "https://dl.dropboxusercontent.com/s/9ayzkc9jcam5adf/crossec_model.pkl?dl=0"
-urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
-learn_inf = load_learner(Path()/'crossec_model.pkl')
+
+if path.exists("crossec_model.pkl"):
+    MODEL_URL = "https://dl.dropboxusercontent.com/s/9ayzkc9jcam5adf/crossec_model.pkl?dl=0"
+    urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
+learn_inf = load_learner('crossec_model.pkl')
 
 tissue = [
  'C3DicotStemSecondary', 'C3DicotStemPrimary'
