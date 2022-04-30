@@ -1,15 +1,30 @@
 """Create an Image Classification Web App using PyTorch and Streamlit."""
 # import libraries
 from PIL import Image
+from fastai.vision.widgets import *
+from fastai.vision.all import *
 from torchvision import models, transforms
 import torch
 import streamlit as st
 import time
 import os
 import glob
+import urllib.request
+from pathlib import Path
+from csv import writer
+import pathlib
+import codecs
+temp = pathlib.PosixPath
+pathlib.PosixPath = pathlib.WindowsPath
+# MODEL_URL = "https://drive.google.com/uc?export=download&id=1uLzS1zVLU4d8TxmBZjS9LgoIGCsQn9lP"
+# urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
+learn_inf = load_learner(Path()/'crossec_model.pkl')
 
-# set title of app
-def predict(image):
+tissue = [
+ 'C3DicotStemSecondary', 'C3DicotStemPrimary'
+]
+
+def predict(image, learn):
         """Return top 5 predictions ranked by highest probability.
 
         Parameters
@@ -20,35 +35,11 @@ def predict(image):
         :return: top 5 predictions ranked by highest probability
         """
         # create a ResNet model
-        resnet = models.resnet101(pretrained = True)
+        pred, pred_idx, pred_prob = learn.predict(image)
 
-        # transform the input image through resizing, normalization
-        transform = transforms.Compose([
-            transforms.Resize(256),
-            transforms.CenterCrop(224),
-            transforms.ToTensor(),
-            transforms.Normalize(
-                mean = [0.485, 0.456, 0.406],
-                std = [0.229, 0.224, 0.225]
-                )])
-
-        # load the image, pre-process it, and make predictions
-        img = Image.open(image)
-        batch_t = torch.unsqueeze(transform(img), 0)
-        resnet.eval()
-        out = resnet(batch_t)
-
-        with open('imagenet_classes.txt') as f:
-            classes = [line.strip() for line in f.readlines()]
-
-        # return the top 5 predictions ranked by highest probabilities
-        prob = torch.nn.functional.softmax(out, dim = 1)[0] * 100
-        _, indices = torch.sort(out, descending = True)
-        # predict_progress = st.progress(0)
-        # for percent_complete in range(100):
-        #     time.sleep(0.05)
-        #     predict_progress.progress(percent_complete + 1)
-        return [(classes[idx], prob[idx].item()) for idx in indices[0][:5]]
+        classes = tissue[int(pred_idx)]
+        
+        return [(classes, pred_prob[pred_idx])]
 
 
 image = Image.open('Logo.png')
@@ -60,14 +51,13 @@ with st.container():
     file_up = st.file_uploader("Upload an image", type = "jpg")
     if file_up is not None:
         # display image that user uploaded
-        image = Image.open(file_up)
+        image = PILImage.create(file_up)
         st.image(image, caption = 'Uploaded Image.', use_column_width = True)
         st.write("")
-        labels = predict(file_up)
-        score = int(labels[0][1])
-        score = str(score)
+        labels = predict(image,learn_inf)
+        score = labels[0][1]
             # print out the top 5 prediction labels with scores
-        st.success("Result: "+ labels[0][0] + " " + score+"%")
+        st.success(f"Result: {labels[0][0]} {score*100:.02f}%")
     st.write("")
     with st.expander("ส่งงาน"):
         name = st.text_input('ชื่อ-นามสกุล')
@@ -78,7 +68,7 @@ with st.container():
         num = st.text_input('เลขที่')
         tissue = st.selectbox(
             'เลือกหัวข้อปฏิบัติการ',
-            ['พืชใบเลี้ยงเดี่ยวส่วนลำต้น','พืชใบเลี้ยงเดี่ยวส่วนราก','พืชเลี้ยงคู่ส่วนลำต้น','พืชเลี้ยงคู่ส่วนลำต้น','ใบพืช C3', 'ใบพืช C4']
+            ['พืชใบเลี้ยงเดี่ยวส่วนลำต้นระยะปฐมภูมิ','พืชใบเลี้ยงเดี่ยวส่วนรากระยะปฐมภูมิ','พืชเลี้ยงคู่ส่วนลำต้นปฐมระยะภูมิ','พืชเลี้ยงคู่ส่วนรากระยะปฐมภูมิ','พืชใบเลี้ยงเดี่ยวส่วนลำต้นระยะทุติยภูมิ','พืชใบเลี้ยงเดี่ยวส่วนรากระยะทุติยภูมิ','พืชเลี้ยงคู่ส่วนลำต้นปฐมระยะทุติยภูมิ','พืชเลี้ยงคู่ส่วนรากระยะทุติยภูมิ','ใบพืช C3', 'ใบพืช C4']
         )
         user={'Name':name,'Room':room,'Number':num}
         if st.button('Send'):
@@ -107,12 +97,21 @@ with st.container():
                         count += len(files)
                 with open(os.path.join(path,file_up.name), "wb") as f:
                         f.write(file_up.getbuffer())
+                cpt = sum([len(files) for r, d, files in os.walk(path)]) -1
+                os.rename(f"{path}/{file_up.name}",f'{path}/{cpt}.jpg')
                 st.success(user['Name']+ " ชั้น " + user['Room']+ " เลขที่ " +user['Number']+" ส่ง "+labels[0][0]+" แล้ว")
+                path=os.path.join('Userdata.csv')
+                with open(path, 'a',encoding="utf-8") as csvfile:
+                    writer_object = writer(csvfile)
+            
+                # Pass the list as an argument into
+                # the writerow()
+                    writer_object.writerow([name,room,num,tissue])
+                    csvfile.close()
             else:
                st.error("กรุณากรอกข้อมูลให้ครบถ้วน") 
     # enable users to upload images for the model to make predictions
     st.write("")
 with st.container():
-    cpt=0
     cpt = sum([len(files) for r, d, files in os.walk('./predicted/')])
     st.metric(label="Image Predicted", value=cpt, delta=1)
