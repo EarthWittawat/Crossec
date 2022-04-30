@@ -10,7 +10,7 @@ from csv import writer
 # read csv from a github repo
 st.set_page_config(
     page_title="Real-Time Data Science Dashboard",
-    page_icon="✅",
+    theme="Light",
     layout="wide",
 )  
 add_selectbox = st.sidebar.selectbox(
