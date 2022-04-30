@@ -17,9 +17,9 @@ import pathlib
 temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath
 
-if os.path.exists('crossec_model.pkl') == True:
-    MODEL_URL = "https://dl.dropboxusercontent.com/s/9ayzkc9jcam5adf/crossec_model.pkl?dl=0"
-    urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
+
+MODEL_URL = "https://dl.dropboxusercontent.com/s/9ayzkc9jcam5adf/crossec_model.pkl?dl=0"
+urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
 learn_inf = load_learner(Path()/'crossec_model.pkl')
 
 tissue = [
