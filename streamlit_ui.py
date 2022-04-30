@@ -16,7 +16,7 @@ import pathlib
 
 temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath
-
+st.write(os.path.exists('crossec_model.pkl'))
 if os.path.exists('crossec_model.pkl') == False:
     MODEL_URL = "https://dl.dropboxusercontent.com/s/9ayzkc9jcam5adf/crossec_model.pkl?dl=0"
     urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
