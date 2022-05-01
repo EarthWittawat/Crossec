@@ -15,7 +15,7 @@ from csv import writer
 import pathlib
 
 temp = pathlib.PosixPath
-pathlib.PosixPath = pathlib.WindowsPath
+pathlib.WindowsPath = pathlib.PosixPath
 
 
 MODEL_URL = "https://dl.dropboxusercontent.com/s/9ayzkc9jcam5adf/crossec_model.pkl?dl=0"
