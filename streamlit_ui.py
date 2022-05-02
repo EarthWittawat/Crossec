@@ -24,7 +24,6 @@ if file_exists == False:
     urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
 learn_inf = load_learner(Path()/'crossec_model.pkl',cpu=True)
 
-
 tissue = [
  'C3DicotStemSecondary', 'C3DicotStemPrimary'
 ]
@@ -94,7 +93,7 @@ with st.container():
             #             f.write(file_up.getbuffer())
             #         st.success(user['Name']+ " ชั้น " + user['Room']+ " เลขที่ " +user['Number']+" ส่ง "+labels[0][0]+" แล้ว")
                 count = 0
-                path = './predicted/' + tissue
+                path = './predicted/'+ room + '/' + name + '/' + tissue
                 isExist = os.path.exists(path)
                 if not isExist:
                         os.makedirs(path)
@@ -105,7 +104,7 @@ with st.container():
                 cpt = sum([len(files) for r, d, files in os.walk(path)]) -1
                 os.rename(f"{path}/{file_up.name}",f'{path}/{cpt}.jpg')
                 st.success(user['Name']+ " ชั้น " + user['Room']+ " เลขที่ " +user['Number']+" ส่ง "+labels[0][0]+" แล้ว")
-                path=os.path.join('Userdata.csv')
+                path=os.path.join(room+'.csv')
                 with open(path, 'a',encoding="utf-8") as csvfile:
                     writer_object = writer(csvfile)
             
