@@ -16,7 +16,8 @@ from csv import writer
 import pathlib
 
 file_exists = os.path.exists('crossec_model.pkl')
-st.write(file_exists)
+temp = pathlib.PosixPath
+pathlib.PosixPath = pathlib.WindowsPath
 plt = platform.system()
 if plt == 'Linux': pathlib.WindowsPath = pathlib.PosixPath
 if file_exists == False: 
