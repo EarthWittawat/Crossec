@@ -13,11 +13,6 @@ import os.path
 import urllib.request
 from pathlib import Path
 from csv import writer
-import pathlib
-
-temp = pathlib.PosixPath
-pathlib.PosixPath = pathlib.WindowsPath
-
 
 file_exists = os.path.exists('crossec_model.pkl')
 if file_exists: 
