@@ -19,12 +19,13 @@ temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath
 
 
-# file_exists = os.path.exists('crossec_model.pkl')
-# if file_exists: 
-#     MODEL_URL = "https://dl.dropboxusercontent.com/s/9ayzkc9jcam5adf/crossec_model.pkl?dl=0"
-#     urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
+file_exists = os.path.exists('crossec_model.pkl')
+if file_exists: 
+    MODEL_URL = "https://dl.dropboxusercontent.com/s/9ayzkc9jcam5adf/crossec_model.pkl?dl=0"
+    urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
 learn_inf = load_learner(Path()/'crossec_model.pkl',cpu=True)
-pathlib.PosixPath = temp
+
+
 tissue = [
  'C3DicotStemSecondary', 'C3DicotStemPrimary'
 ]
