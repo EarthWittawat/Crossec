@@ -1,5 +1,6 @@
 """Create an Image Classification Web App using PyTorch and Streamlit."""
 # import libraries
+from this import d
 from PIL import Image
 from fastai.vision.widgets import *
 from fastai.vision.all import *
@@ -18,8 +19,11 @@ temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath
 
 
+file_exists = os.path.exists('./crossec_model.pkl')
+st.write(file_exists)
 MODEL_URL = "https://dl.dropboxusercontent.com/s/9ayzkc9jcam5adf/crossec_model.pkl?dl=0"
 urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
+
 learn_inf = load_learner(Path()/'crossec_model.pkl',cpu=True)
 pathlib.PosixPath = temp
 tissue = [
