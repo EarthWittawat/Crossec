@@ -10,7 +10,7 @@ import os
 from csv import writer
 # read csv from a github repo
 st.set_page_config(
-    page_title="Real-Time Data Science Dashboard",
+    page_title="Crossec Dashboard",
     layout="wide",
 )  
 room = st.sidebar.selectbox(

@@ -15,17 +15,21 @@ from pathlib import Path
 from csv import writer
 import pathlib
 
+st.set_page_config(
+    page_title="Crossec ML",
+    layout="wide",
+)  
 file_exists = os.path.exists('crossec_model.pkl')
 
 plt = platform.system()
-if plt == 'Linux': pathlib.WindowsPath = pathlib.PosixPath
-if file_exists == False: 
-    MODEL_URL = "https://dl.dropboxusercontent.com/s/9ayzkc9jcam5adf/crossec_model.pkl?dl=0"
-    urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
+if plt == 'Windows': pathlib.PosixPath = pathlib.WindowsPath
+# if file_exists == False: 
+#     MODEL_URL = "https://dl.dropboxusercontent.com/s/9ayzkc9jcam5adf/crossec_model.pkl?dl=0"
+#     urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
 learn_inf = load_learner(Path()/'crossec_model.pkl',cpu=True)
 
 tissue = [
- 'C3DicotStemSecondary', 'C3DicotStemPrimary'
+ 'DicotStemSecondary', 'DicotStemPrimary', 'MonocotStemPrimary','MonocotRootPrimary'
 ]
 
 def predict(image, learn):
