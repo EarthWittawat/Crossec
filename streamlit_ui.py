@@ -29,7 +29,7 @@ if file_exists == False:
 learn_inf = load_learner(Path()/'crossec_model.pkl',cpu=True)
 
 tissue = [
- 'DicotStemSecondary', 'DicotStemPrimary', 'MonocotStemPrimary','MonocotRootPrimary'
+ 'รากพืชใบเลี้ยงคู่ระยะปฐมภูมิ', 'ลำต้นพืชใบเลี้ยงคู่ระยะปฐมภูมิ', 'ลำต้นพืชใบเลี้ยงคู่ระยะทุติยภูมิ','รากพืชใบเลี้ยงเดี่ยวระยะปฐมภมิ','ลำต้นพืชใบเลี้ยงเดี่ยวระยะปฐมภูมิ'
 ]
 
 def predict(image, learn):
