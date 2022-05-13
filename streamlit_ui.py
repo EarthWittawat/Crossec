@@ -23,9 +23,9 @@ file_exists = os.path.exists('crossec_model.pkl')
 
 plt = platform.system()
 if plt == 'Windows': pathlib.PosixPath = pathlib.WindowsPath
-if file_exists == False: 
-     MODEL_URL = "https://dl.dropboxusercontent.com/s/k66f4yi8i0mlalp/crossec_model.pkl?dl=0"
-     urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
+
+MODEL_URL = "https://dl.dropboxusercontent.com/s/k66f4yi8i0mlalp/crossec_model.pkl?dl=0"
+urllib.request.urlretrieve(MODEL_URL,"crossec_model.pkl")
 learn_inf = load_learner(Path()/'crossec_model.pkl',cpu=True)
 
 tissue = [
