@@ -21,7 +21,7 @@ with st.sidebar:
     st.image('Logo.png',width=100)
     st.image('aib.png',width=100)
     st.header("About this Project✔")
-    st.write("Project นี้ได้รับการสนับสนุนจากโครงการ [AI Builder 2022](https://ai-builders.github.io/) โดยจัดทำขึ้นเพื่อเป็นตัวช่วยในการส่งเสริมการทำปฏิบัติการภาพตัดขวาง โดยทีมผู้พัฒนาได้จัดทำ Dataset และเผยแพร่ [Open Source](https://www.kaggle.com/datasets/earthwttw/plant-tissue-cross-section-dataset) ไว้บนเว็บไซต์ Kaggle",unsafe_allow_html=True)
+    st.write("Project นี้ได้รับการสนับสนุนจากโครงการ [AI Builders 2022](https://ai-builders.github.io/) โดยจัดทำขึ้นเพื่อเป็นตัวช่วยในการส่งเสริมการทำปฏิบัติการภาพตัดขวาง โดยทีมผู้พัฒนาได้จัดทำ Dataset และเผยแพร่ [Open Source](https://www.kaggle.com/datasets/earthwttw/plant-tissue-cross-section-dataset) ไว้บนเว็บไซต์ Kaggle",unsafe_allow_html=True)
     st.header("Developer👨‍💻")
     st.text("Wittawat Kitipatthavorn\nNawapat Jongaouyporn\nSoraat Treenuson")
 file_exists = os.path.exists('model.pkl')
