@@ -60,7 +60,7 @@ with st.container():
 
     st.subheader("Let's make cross section easier!")
     st.write("")
-    file_up = st.file_uploader("Upload an image", type = "jpeg,jpg")
+    file_up = st.file_uploader("Upload an image", type = "jpg")
     if file_up is not None:
         image = PILImage.create(file_up)
         st.image(image, caption = 'Uploaded Image.', use_column_width = True)
