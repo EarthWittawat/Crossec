@@ -4,7 +4,7 @@ System for supporting plant tissue laboratory by using Image classification.
 
 ## Problem Statement
 
-Create model to classify cross section plant tissue in 8 classes for using in biology laboratory.
+Create model to classify cross section plant tissue in 8 classes for using in Biology laboratory.
 
 
 
